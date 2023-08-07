@@ -11,7 +11,7 @@
   "exports": {
     "import": "./dist/index.js"
   },
-  "type": "module",
+  "type": "commonjs",
   "files": [
     "dist/**/*",
     "README.md"

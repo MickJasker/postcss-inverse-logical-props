@@ -19,4 +19,5 @@ const postCssInverseLogicalProperties: postcss.PluginCreator<undefined> = () => 
 
 postCssInverseLogicalProperties.postcss = true;
 
-export default postCssInverseLogicalProperties;
+// eslint-disable-next-line unicorn/prefer-module
+module.exports = postCssInverseLogicalProperties;
