@@ -1,7 +1,20 @@
-export function returnTest(): string {
-  const result = 'test';
-  // eslint-disable-next-line no-console
-  console.log('result', result);
+import type * as postcss from 'postcss';
 
-  return result;
-}
+const postCssInverseLogicalProperties: postcss.PluginCreator<undefined> = () => ({
+  postcssPlugin: 'postcss-inverse-logical-properties',
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  Declaration(decl): void {
+    if (decl.prop === 'left') {
+      decl.prop = 'inset-inline-start';
+    }
+
+    if (decl.prop === 'right') {
+      decl.prop = 'inset-inline-end';
+    }
+  },
+  postcss: true,
+});
+
+postCssInverseLogicalProperties.postcss = true;
+
+export default postCssInverseLogicalProperties;
