@@ -5,11 +5,11 @@ const postCssInverseLogicalProperties: postcss.PluginCreator<undefined> = () => 
   // eslint-disable-next-line @typescript-eslint/naming-convention
   Declaration(decl): void {
     if (decl.prop === 'left') {
-      decl.prop = 'inset-inline-start';
+      decl.replaceWith(decl.clone({ prop: 'inset-inline-start' }));
     }
 
     if (decl.prop === 'right') {
-      decl.prop = 'inset-inline-end';
+      decl.replaceWith(decl.clone({ prop: 'inset-inline-end' }));
     }
   },
   postcss: true,
