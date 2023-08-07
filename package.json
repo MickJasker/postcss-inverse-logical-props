@@ -23,7 +23,7 @@
     "dev": "npm run build:ts -- --watch",
     "test": "vitest ./src/",
     "build": "npm-run-all -s clean build:*",
-    "build:ts": "tsc -p ./tsconfig.build.json",
+    "build:ts": "tsc -p ./tsconfig.build.json && ts-node-esm ./scripts/preparePublish.ts",
     "clean": "npm-run-all clean:*",
     "clean:test": "shx rm -rf coverage .nyc_output",
     "clean:npm": "shx rm -rf dist",
@@ -33,7 +33,7 @@
     "typecheck": "tsc --project tsconfig.json --noEmit --noUnusedLocals",
     "prepare-publish": "ts-node-esm ../scripts/preparePublish.ts",
     "prepublishOnly": "npm run prepare-publish",
-    "prepare": "husky install"
+    "postinstall": "husky install"
   },
   "prettier": "@mediamonks/prettier-config",
   "eslintConfig": {
